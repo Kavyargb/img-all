@@ -1,0 +1,161 @@
+/* Define color variables for easy theme switching */
+:root {
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --card-bg-color: #1e1e1e;
+    --accent-color: cyan;
+    --shadow-color: rgba(0, 0, 0, 0.5);
+    --like-color: #ff4757;
+}
+
+/* Light theme variable overrides */
+body.light-theme {
+    --bg-color: #f0f2f5;
+    --text-color: #333;
+    --card-bg-color: #ffffff;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.main-header {
+    text-align: center;
+    padding: 40px 20px 20px 20px;
+}
+
+.title-container .sub-title {
+    font-size: 1.2rem;
+    font-weight: 300;
+    display: block;
+    margin-bottom: -10px; /* Pulls the main title up */
+}
+
+.title-container .main-title {
+    font-size: 4rem;
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+.controls-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px 20px 40px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.theme-switcher, .sort-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Toggle Switch Styles */
+.switch { position: relative; display: inline-block; width: 60px; height: 34px; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; }
+.slider:before { position: absolute; content: ""; height: 26px; width: 26px; left: 4px; bottom: 4px; background-color: white; transition: .4s; }
+input:checked + .slider { background-color: var(--accent-color); }
+input:checked + .slider:before { transform: translateX(26px); }
+.slider.round { border-radius: 34px; }
+.slider.round:before { border-radius: 50%; }
+
+/* Sort Button Styles */
+.sort-controls button {
+    background: none;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.sort-controls button:hover,
+.sort-controls button.active {
+    background-color: var(--accent-color);
+    color: #121212;
+    font-weight: bold;
+}
+
+
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px 40px;
+}
+
+.image-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    background-color: var(--card-bg-color);
+    box-shadow: 0 4px 15px var(--shadow-color);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.image-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px var(--shadow-color);
+}
+
+.image-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.image-card .info-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    color: white;
+    padding: 40px 15px 15px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stats {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 0.9rem;
+}
+
+.stats span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.like-btn {
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #fff;
+    transition: color 0.2s, transform 0.2s;
+}
+
+.like-btn.liked {
+    color: var(--like-color);
+}
+
+.like-btn:hover {
+    transform: scale(1.2);
+}
