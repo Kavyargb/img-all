@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kavya's Images Hub</title>
+    <!-- Use url_for to generate correct path to CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+        <header class="main-header">
+        <div class="title-container">
+            <span class="sub-title">Kavya's</span>
+            <h1 class="main-title">Images Hub</h1>
+        </div>
+    </header>
+
+    <div class="controls-container">
+        <!-- Theme Switcher -->
+        <div class="theme-switcher">
+            <i class="fas fa-sun"></i>
+            <label class="switch">
+                <input type="checkbox" id="themeToggle">
+                <span class="slider round"></span>
+            </label>
+            <i class="fas fa-moon"></i>
+        </div>
+
+        <!-- AI Categorization / Sorting Controls -->
+        <div class="sort-controls">
+            <span>Categorize by:</span>
+            <button id="sortDefault" class="active">Default</button>
+            <button id="sortMostViewed">Most Viewed</button>
+            <button id="sortMostLiked">Most Liked</button>
+        </div>
+    </div>
+    
+    <main>
+        <div id="imageGrid" class="image-grid">
+            <!-- Images will be injected here by JavaScript -->
+        </div>
+        <div id="load-trigger"></div>
+    </main>
+
+    <!--
+      This script block receives the full image data from our Flask backend.
+      The variable name is updated for clarity.
+    -->
+    <script>
+        const allImageData = {{ all_image_data_json|safe }};
+    </script>
+    
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
+
+</body>
+</html>
